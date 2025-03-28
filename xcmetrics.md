@@ -54,6 +54,14 @@ Follow the steps [here](https://xcmetrics.io/docs/backstage-integration.html).
     * Run: `npx @backstage/create-app`
         * app name: `xcmetrics-app`
         * for backend select: `PostgreSQL`
+           * If option to select `PostgreSQL` is not given do the following:
+              * `yarn add pg`
+              * Add the following:
+                 ```yaml
+                 database:
+                 ...
+                     client: pg
+                 ```
     * Add backstage xcmetrics plugin: 
         * `cd xcmetrics-app`
         * `yarn add @backstage/plugin-xcmetrics` (might ask you to run with `-W` option)
