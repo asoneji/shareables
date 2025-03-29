@@ -56,39 +56,18 @@ Follow the steps [here](https://xcmetrics.io/docs/backstage-integration.html).
         * for backend select: `PostgreSQL`
            * If option to select `PostgreSQL` is not given do the following:
               * `yarn add pg`
-              * Add the following:
+              * Update the config `app-config.yaml`:
                  ```yaml
-                 database:
+                   database:
                  ...
-                     client: pg
+                   client: pg
+                   connection:        
+                     host: localhost
+                     port: 5432
+                     user: xcmetrics-dev
+                     password: xcmetrics-dev
                  ```
-    * Add backstage xcmetrics plugin: 
-        * `cd xcmetrics-app`
-        * `yarn add @backstage/plugin-xcmetrics` (might ask you to run with `-W` option)
-    * Update the config `packages/app/src/App.tsx`:
-    * Add the following:
-        ```ts
-        import { XcmetricsPage } from '@backstage/plugin-xcmetrics';
-        ```
-    * Update the config `app-config.yaml`: 
-    * Add the following:
-        ```yaml
-        proxy:
-        ...
-        '/xcmetrics':
-            target: http://127.0.0.1:8080/v1
-        ```
-    * Add the following:
-        ```yaml
-          database:
-          client: pg
-          connection:
-        ...
-            host: localhost
-            port: 5432
-            user: xcmetrics-dev
-            password: xcmetrics-dev
-        ```
+    * Follow the steps for backstage and xcmetrics plugin [here](https://github.com/backstage/community-plugins/blob/main/workspaces/xcmetrics/plugins/xcmetrics/README.md)
     * Run the app: `cd xcmetrics-app && yarn dev`
     * Goto http://localhost:3000/xcmetrics
         * Run Xcode build to see new entry
